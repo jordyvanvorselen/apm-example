@@ -160,7 +160,7 @@ Check the table in "What works in which tool" first. Not every box can pass in e
 
 I'm Jordy van Vorselen. I help AI-native software teams deliver faster, with fewer defects at the same time.
 
-Questions, a short project, or long-term collaboration: [jordy@vanvorselen.com](mailto:jordy@vanvorselen.com) · [LinkedIn](https://www.linkedin.com/in/jordy-van-vorselen/) · [jordyvanvorselen.com](https://jordyvanvorselen.com)
+Questions, a short project, or long-term collaboration: [jordy@vanvorselen.com](mailto:jordy@vanvorselen.com) · [LinkedIn](https://www.linkedin.com/in/jordy-van-vorselen/) · [www.jordyvanvorselen.com](https://www.jordyvanvorselen.com)
 
 ## License
 
