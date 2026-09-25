@@ -3,11 +3,20 @@
   "hooks": {
     "PreToolUse": [
       {
-        "matcher": "Edit|Write|MultiEdit",
+        "matcher": "Edit|Write|MultiEdit|apply_patch",
         "hooks": [
           {
             "type": "command",
-            "command": "p=$(jq -r \".tool_input.file_path // .tool_input.path // empty\"); [ -n \"$p\" ] || exit 0; root=\"${CLAUDE_PROJECT_DIR:-$PWD}\"; case \"$p\" in /*) ;; *) p=\"$root/$p\" ;; esac; case \"$p\" in \"$root/.cursor/environment.json\"|\"$root/.claude/settings.local.json\") exit 0 ;; \"$root\"/.claude/*|\"$root\"/.cursor/*|\"$root\"/.codex/*|\"$root\"/.agents/*) echo \"BLOCKED: APM generates this file and overwrites it on the next pull. Edit the source in ai/.apm/ instead: rules in instructions/, skills in skills/, agents in agents/, hooks in hooks/.\" >&2; exit 2 ;; esac; exit 0"
+            "command": "input=$(cat)\nroot=\"${CLAUDE_PROJECT_DIR:-$PWD}\"\n{\n  printf '%s' \"$input\" | jq -r '.tool_input.file_path // .tool_input.path // empty'\n  printf '%s' \"$input\" | jq -r '.tool_input | tostring' | grep -oE '\\*\\*\\* (Add|Update|Delete) File: [^\\\\\"]+' | sed -E 's/^\\*\\*\\* (Add|Update|Delete) File: //'\n} | while IFS= read -r p; do\n  [ -n \"$p\" ] || continue\n  case \"$p\" in /*) ;; *) p=\"$root/$p\" ;; esac\n  case \"$p\" in\n    \"$root/.cursor/environment.json\" | \"$root/.claude/settings.local.json\") ;;\n    \"$root\"/.claude/* | \"$root\"/.cursor/* | \"$root\"/.codex/* | \"$root\"/.agents/*)\n      echo \"BLOCKED: APM generates $p and overwrites it on the next pull. Edit the source in ai/.apm/ instead: rules in instructions/, skills in skills/, agents in agents/, hooks in hooks/.\" >&2\n      exit 2 ;;\n  esac\ndone\n"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cmd=$(jq -r '.tool_input.command // empty')\n[ -n \"$cmd\" ] || exit 0\nwrites=$(printf '%s' \"$cmd\" | sed -E 's/[0-9]*>&[0-9]+//g; s/[0-9]*>+[[:space:]]*\\/dev\\/null//g')\nprintf '%s' \"$writes\" | grep -qE '>|(^|[^[:alnum:]_-])(tee|cp|mv|rm|touch|truncate|ln|install|rsync)([[:space:]]|$)|sed[[:space:]]+(-[a-zA-Z]*i|--in-place)' || exit 0\nroot=\"${CLAUDE_PROJECT_DIR:-$PWD}\"\nprintf '%s\\n' \"$cmd\" | tr ' \\t;&|<>()' '\\n\\n\\n\\n\\n\\n\\n\\n\\n' | tr -d \"\\\"'\" | while IFS= read -r w; do\n  case \"$w\" in .claude | .cursor | .codex | .agents | */.claude | */.cursor | */.codex | */.agents) w=\"$w/\" ;; esac\n  case \"$w\" in *.claude/* | *.cursor/* | *.codex/* | *.agents/*) ;; *) continue ;; esac\n  w=\"${w#./}\"\n  case \"$w\" in \"~/\"*) w=\"$HOME/${w#\\~/}\" ;; /*) ;; *) w=\"$root/$w\" ;; esac\n  case \"$w\" in\n    \"$root/.cursor/environment.json\" | \"$root/.claude/settings.local.json\") ;;\n    \"$root\"/.claude/* | \"$root\"/.cursor/* | \"$root\"/.codex/* | \"$root\"/.agents/*)\n      echo \"BLOCKED: this command writes into a folder APM generates, and the next pull overwrites it. Edit the source in ai/.apm/ instead. Only need to read? Use your read tool.\" >&2\n      exit 2 ;;\n  esac\ndone\n"
           }
         ]
       }

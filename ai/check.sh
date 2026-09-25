@@ -22,18 +22,20 @@ has_files() {
 echo "The Monday test, the parts a script can check:"
 echo ""
 
+wanted=$(awk '/^apm[[:space:]]/ { print $2; exit }' .tool-versions 2>/dev/null)
+install_apm="curl -sSL https://aka.ms/apm-unix | sh -s -- @v${wanted:-0.31.0}"
+
 if command -v apm >/dev/null 2>&1; then
   pass "apm is installed"
 else
-  fail "apm is installed" "brew install microsoft/apm/apm"
+  fail "apm is installed" "$install_apm"
 fi
 
-wanted=$(awk '/^apm[[:space:]]/ { print $2; exit }' .tool-versions 2>/dev/null)
 installed=$(apm --version 2>/dev/null | grep -Eo '[0-9]+\.[0-9]+\.[0-9]+' | head -n1)
 if [ -n "$wanted" ] && [ "$wanted" = "$installed" ]; then
   pass "apm $installed matches .tool-versions"
 else
-  fail "apm version matches .tool-versions (want ${wanted:-?}, have ${installed:-none})" "install apm $wanted"
+  fail "apm version matches .tool-versions (want ${wanted:-?}, have ${installed:-none})" "$install_apm"
 fi
 
 if command -v jq >/dev/null 2>&1; then

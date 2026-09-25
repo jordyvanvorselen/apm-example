@@ -8,7 +8,8 @@ if ! command -v apm >/dev/null 2>&1; then
   echo "  WARNING: apm is not installed." >&2
   echo "  Your AI tools have NO team rules, skills, agents or hooks." >&2
   echo "" >&2
-  echo "  Fix: brew install microsoft/apm/apm" >&2
+  version=$(awk '/^apm[[:space:]]/ { print $2; exit }' .tool-versions 2>/dev/null)
+  echo "  Fix: curl -sSL https://aka.ms/apm-unix | sh -s -- @v${version:-0.31.0}" >&2
   echo "       make setup" >&2
   echo "" >&2
   exit 0

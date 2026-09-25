@@ -6,7 +6,10 @@ root="$PWD"
 failures=0
 
 hook_command() {
-  jq -r '.hooks.PreToolUse[0].hooks[0].command' "ai/.apm/hooks/$1.json"
+  file="${1%%#*}"
+  entry=0
+  case "$1" in *#bash) entry=1 ;; esac
+  jq -r --argjson i "$entry" '.hooks.PreToolUse[$i].hooks[0].command' "ai/.apm/hooks/$file.json"
 }
 
 expect() {
@@ -32,6 +35,10 @@ run() {
   jq -n --arg c "$1" '{tool_input:{command:$c}}'
 }
 
+patch() {
+  jq -n --arg p "$1" '{tool_name:"apply_patch",tool_input:{command:$p}}'
+}
+
 BLOCK=2
 ALLOW=0
 
@@ -42,6 +49,35 @@ expect block-generated-edits $ALLOW "$(edit "$root/ai/.apm/skills/create-pr/SKIL
 expect block-generated-edits $ALLOW "$(edit "$root/.cursor/environment.json")" "allows the tracked Cursor bootstrap"
 expect block-generated-edits $ALLOW "$(edit "$root/.claude/settings.local.json")" "allows personal Claude settings"
 expect block-generated-edits $ALLOW "$(edit "$HOME/.claude/CLAUDE.md")" "allows personal files in the home folder"
+expect block-generated-edits $BLOCK "$(patch "*** Begin Patch
+*** Update File: .claude/rules/web-testing.md
+@@
++hook test
+*** End Patch")" "blocks a Codex patch on a generated file"
+expect block-generated-edits $BLOCK "$(patch "*** Begin Patch
+*** Update File: web/src/Button.tsx
+@@
++x
+*** Add File: .agents/skills/new/SKILL.md
++x
+*** End Patch")" "blocks a Codex patch when any file in it is generated"
+expect block-generated-edits $ALLOW "$(patch "*** Begin Patch
+*** Update File: web/src/Button.tsx
+@@
++x
+*** End Patch")" "allows a Codex patch on a source file"
+
+expect block-generated-edits#bash $BLOCK "$(run "printf '%s\\n' 'x' >> .claude/rules/web-testing.md")" "blocks appending to a generated file from the shell"
+expect block-generated-edits#bash $BLOCK "$(run "echo x | tee -a ./.cursor/rules/web-testing.mdc")" "blocks tee into a generated file"
+expect block-generated-edits#bash $BLOCK "$(run "sed -i '' 's/a/b/' .agents/skills/release/SKILL.md")" "blocks sed -i on a generated file"
+expect block-generated-edits#bash $BLOCK "$(run "rm -r .codex")" "blocks removing a generated folder"
+expect block-generated-edits#bash $BLOCK "$(run "cp notes.md $root/.claude/skills/x.md")" "blocks copying into a generated folder by absolute path"
+expect block-generated-edits#bash $ALLOW "$(run "ls .claude/skills 2>/dev/null")" "allows listing a generated folder"
+expect block-generated-edits#bash $ALLOW "$(run "cat .claude/rules/web-testing.md 2>&1")" "allows reading a generated file"
+expect block-generated-edits#bash $ALLOW "$(run "echo x >> ~/.claude/CLAUDE.md")" "allows writing personal files in the home folder"
+expect block-generated-edits#bash $ALLOW "$(run "echo '{}' > .cursor/environment.json")" "allows writing the tracked Cursor bootstrap"
+expect block-generated-edits#bash $ALLOW "$(run "ai/sync.sh")" "allows the sync script"
+expect block-generated-edits#bash $ALLOW "$(run "echo done > build.log")" "allows writing other files"
 
 expect block-destructive-commands $BLOCK "$(run "rm -rf /")" "blocks wiping the root"
 expect block-destructive-commands $BLOCK "$(run "rm -rf .")" "blocks wiping the repo"

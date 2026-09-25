@@ -3,8 +3,9 @@ set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
-APM_INSTALL_DIR="${APM_INSTALL_DIR:-$HOME/.local/bin}"
-PATH_LINE="export PATH=\"${APM_INSTALL_DIR}:\$PATH\""
+APM_PREFIX="${APM_PREFIX:-$HOME/.local}"
+APM_BIN_DIR="$APM_PREFIX/bin"
+PATH_LINE="export PATH=\"${APM_BIN_DIR}:\$PATH\""
 
 log() {
   printf '[cloud-agent-setup] %s\n' "$*"
@@ -16,8 +17,8 @@ die() {
 }
 
 put_apm_on_path() {
-  mkdir -p "$APM_INSTALL_DIR"
-  export PATH="$APM_INSTALL_DIR:$PATH"
+  mkdir -p "$APM_BIN_DIR"
+  export PATH="$APM_BIN_DIR:$PATH"
   for profile in "$HOME/.bashrc" "$HOME/.profile"; do
     touch "$profile"
     grep -Fqx "$PATH_LINE" "$profile" || printf '\n%s\n' "$PATH_LINE" >>"$profile"
@@ -38,11 +39,12 @@ wanted="$(pinned_apm_version)"
 [[ -n "$wanted" ]] || die "No apm version in .tool-versions"
 
 if [[ "$(installed_apm_version)" != "$wanted" ]]; then
-  log "Installing APM $wanted into $APM_INSTALL_DIR"
-  curl -fsSL https://aka.ms/apm-unix | APM_INSTALL_DIR="$APM_INSTALL_DIR" sh -s -- "@v${wanted}"
+  log "Installing APM $wanted into $APM_PREFIX"
+  curl -fsSL https://aka.ms/apm-unix | sh -s -- --prefix "$APM_PREFIX" "@v${wanted}"
 fi
 
 command -v apm >/dev/null 2>&1 || die "apm is not on PATH after install"
+apm --version >/dev/null 2>&1 || die "apm is installed but does not start. On Linux it needs libsqlite3: apt-get install libsqlite3-0"
 
 log "Deploying the team's AI config"
 bash ./ai/sync.sh
