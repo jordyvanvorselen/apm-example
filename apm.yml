@@ -1,0 +1,13 @@
+name: acme-shop
+version: 1.0.0
+description: Example repo with a shared, team-owned AI workflow
+dependencies:
+  apm:
+    - ./ai
+    - microsoft/apm/packages/apm-guide#v0.31.0
+  mcp: []
+targets:
+  - claude
+  - cursor
+  - codex
+  - agent-skills

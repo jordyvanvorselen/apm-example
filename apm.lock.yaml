@@ -1,0 +1,587 @@
+lockfile_version: '1'
+apm_version: 0.31.0
+dependencies:
+- repo_url: _local/ai
+  name: acme-shop-ai
+  version: 1.0.0
+  package_type: apm_package
+  deployed_files:
+  - .agents/skills/ai-config
+  - .agents/skills/ai-config/SKILL.md
+  - .agents/skills/create-pr
+  - .agents/skills/create-pr/SKILL.md
+  - .agents/skills/create-pr/references/pr-body.md
+  - .agents/skills/release
+  - .agents/skills/release/SKILL.md
+  - .agents/skills/review-pr
+  - .agents/skills/review-pr/SKILL.md
+  - .claude/agents/test-reviewer.md
+  - .claude/rules/ai-config.md
+  - .claude/rules/backend-code-style.md
+  - .claude/rules/git-workflow.md
+  - .claude/rules/web-testing.md
+  - .claude/skills/ai-config
+  - .claude/skills/ai-config/SKILL.md
+  - .claude/skills/create-pr
+  - .claude/skills/create-pr/SKILL.md
+  - .claude/skills/create-pr/references/pr-body.md
+  - .claude/skills/release
+  - .claude/skills/release/SKILL.md
+  - .claude/skills/review-pr
+  - .claude/skills/review-pr/SKILL.md
+  - .codex/agents/test-reviewer.toml
+  - .cursor/agents/test-reviewer.md
+  - .cursor/rules/ai-config.mdc
+  - .cursor/rules/backend-code-style.mdc
+  - .cursor/rules/git-workflow.mdc
+  - .cursor/rules/web-testing.mdc
+  deployed_file_hashes:
+    .agents/skills/ai-config/SKILL.md: sha256:a2f73fff43d9d10fe0d102b2a78010caa0ef8819ef80fb079ebd7e0f468b4e95
+    .agents/skills/create-pr/SKILL.md: sha256:509638b3d51ca90bcfd3e5cb1a3c3537bf2dad5df7101850e0d29422ab310e1d
+    .agents/skills/create-pr/references/pr-body.md: sha256:460628ba8dfd2a9cf12ab3d7e4acd755da4d2ba1466e2972bba6441f9bfb1aa3
+    .agents/skills/release/SKILL.md: sha256:a9cf8472a03c0b961b186486c5edd17a02142bb5304811403c8416b2bbb68777
+    .agents/skills/review-pr/SKILL.md: sha256:fd6e4e518fd47d8de2b4f2777c983d5173efc8818668046c015ffcfb62df3dcb
+    .claude/agents/test-reviewer.md: sha256:71a08ec02f214328db062bd8636789c892b8558633383e35286a0ed7fab28149
+    .claude/rules/ai-config.md: sha256:31a7ac1e581cf9c52976af6dd85b56947e545baead4becdbabc7d309e1f29629
+    .claude/rules/backend-code-style.md: sha256:39005dfe8fb678df8fdb1c4140a779470ffcba932d83de82307d1d461ebb782d
+    .claude/rules/git-workflow.md: sha256:b812bf1b46d78e7a1309a71fa211cd28bebc1e094e0befb1c26fcbf3603ea22b
+    .claude/rules/web-testing.md: sha256:73fd687190f3003f1506951046f61b1e52dce5c1f43a5cf0145a23bcad5eddfc
+    .claude/skills/ai-config/SKILL.md: sha256:a2f73fff43d9d10fe0d102b2a78010caa0ef8819ef80fb079ebd7e0f468b4e95
+    .claude/skills/create-pr/SKILL.md: sha256:509638b3d51ca90bcfd3e5cb1a3c3537bf2dad5df7101850e0d29422ab310e1d
+    .claude/skills/create-pr/references/pr-body.md: sha256:460628ba8dfd2a9cf12ab3d7e4acd755da4d2ba1466e2972bba6441f9bfb1aa3
+    .claude/skills/release/SKILL.md: sha256:a9cf8472a03c0b961b186486c5edd17a02142bb5304811403c8416b2bbb68777
+    .claude/skills/review-pr/SKILL.md: sha256:fd6e4e518fd47d8de2b4f2777c983d5173efc8818668046c015ffcfb62df3dcb
+    .codex/agents/test-reviewer.toml: sha256:b4a73214e370bd9cad9cd99f338c84acb4714ae3cae7d0783de2cff8dd32339b
+    .cursor/agents/test-reviewer.md: sha256:71a08ec02f214328db062bd8636789c892b8558633383e35286a0ed7fab28149
+    .cursor/rules/ai-config.mdc: sha256:ce1bd237c147e3430bb8da2452630bcef1a86bc6a2e7cb7cbb295c8f4b07d855
+    .cursor/rules/backend-code-style.mdc: sha256:eaae0c0dc4c991aad4377f4bc55c28350a458da040893b5159980e71f3646d0b
+    .cursor/rules/git-workflow.mdc: sha256:b44b370353c6b02fe456b24fd47603e4d4ba04bf85338e99faa3782fbf0f056c
+    .cursor/rules/web-testing.mdc: sha256:d0770bac20c0bf06b4969e04be522a6f68f67e91d9bf6fb7ce13e3c7521cf234
+  source: local
+  local_path: ./ai
+- repo_url: microsoft/apm
+  name: apm-guide
+  host: github.com
+  resolved_commit: 8fd10ac5eafee7ca77d41cc34ba139d812fdacd5
+  resolved_ref: v0.31.0
+  version: 1.0.0
+  virtual_path: packages/apm-guide
+  is_virtual: true
+  package_type: apm_package
+  deployed_files:
+  - .agents/skills/apm-usage
+  - .agents/skills/apm-usage/SKILL.md
+  - .agents/skills/apm-usage/authentication.md
+  - .agents/skills/apm-usage/commands.md
+  - .agents/skills/apm-usage/dependencies.md
+  - .agents/skills/apm-usage/governance.md
+  - .agents/skills/apm-usage/installation.md
+  - .agents/skills/apm-usage/package-authoring.md
+  - .agents/skills/apm-usage/troubleshooting.md
+  - .agents/skills/apm-usage/workflow.md
+  - .claude/agents/apm-expert.md
+  - .claude/skills/apm-usage
+  - .claude/skills/apm-usage/SKILL.md
+  - .claude/skills/apm-usage/authentication.md
+  - .claude/skills/apm-usage/commands.md
+  - .claude/skills/apm-usage/dependencies.md
+  - .claude/skills/apm-usage/governance.md
+  - .claude/skills/apm-usage/installation.md
+  - .claude/skills/apm-usage/package-authoring.md
+  - .claude/skills/apm-usage/troubleshooting.md
+  - .claude/skills/apm-usage/workflow.md
+  - .codex/agents/apm-expert.toml
+  - .cursor/agents/apm-expert.md
+  deployed_file_hashes:
+    .agents/skills/apm-usage/SKILL.md: sha256:a76e5e768e5d2257cf910d04063418424a6dc1ff7c02949c69c9824d90e05565
+    .agents/skills/apm-usage/authentication.md: sha256:7bc0522150f74e93f5dd11e9a892ab7df91474755f527a8074a596ccf251cd1c
+    .agents/skills/apm-usage/commands.md: sha256:5e40cf98efa3261449d165253ba50aa2da156133829c09477a2277c5a023af85
+    .agents/skills/apm-usage/dependencies.md: sha256:f0b4b61dcfb4c66c08b23366f9f64decee840363bbb1db590f770da33b366b76
+    .agents/skills/apm-usage/governance.md: sha256:6a75072a9350b444bfef7e985fb4c9baf760b4fe31e661da772b2fb87c67e755
+    .agents/skills/apm-usage/installation.md: sha256:c70544c5d1f85102c5e144ac6ae1ca68fcf8ba6a8323cb2ca6adc840d13aa960
+    .agents/skills/apm-usage/package-authoring.md: sha256:8b1c65ee8f99ee3ed96ceb160037919149211919a213c93c06cc8ad45ac58dad
+    .agents/skills/apm-usage/troubleshooting.md: sha256:43676bd88638a042188ef5763fe4a48a245862d60797141088d67f7ce8279e2e
+    .agents/skills/apm-usage/workflow.md: sha256:b38359a5bf58a9448be0b4e204a1cf6f3e73c1bd832bcffc792f9f3d245cdf39
+    .claude/agents/apm-expert.md: sha256:f6cded3e7eef97ad8fff06208bcfd5a0beafb9cfe810f78e10294c90e16fd8ae
+    .claude/skills/apm-usage/SKILL.md: sha256:a76e5e768e5d2257cf910d04063418424a6dc1ff7c02949c69c9824d90e05565
+    .claude/skills/apm-usage/authentication.md: sha256:7bc0522150f74e93f5dd11e9a892ab7df91474755f527a8074a596ccf251cd1c
+    .claude/skills/apm-usage/commands.md: sha256:5e40cf98efa3261449d165253ba50aa2da156133829c09477a2277c5a023af85
+    .claude/skills/apm-usage/dependencies.md: sha256:f0b4b61dcfb4c66c08b23366f9f64decee840363bbb1db590f770da33b366b76
+    .claude/skills/apm-usage/governance.md: sha256:6a75072a9350b444bfef7e985fb4c9baf760b4fe31e661da772b2fb87c67e755
+    .claude/skills/apm-usage/installation.md: sha256:c70544c5d1f85102c5e144ac6ae1ca68fcf8ba6a8323cb2ca6adc840d13aa960
+    .claude/skills/apm-usage/package-authoring.md: sha256:8b1c65ee8f99ee3ed96ceb160037919149211919a213c93c06cc8ad45ac58dad
+    .claude/skills/apm-usage/troubleshooting.md: sha256:43676bd88638a042188ef5763fe4a48a245862d60797141088d67f7ce8279e2e
+    .claude/skills/apm-usage/workflow.md: sha256:b38359a5bf58a9448be0b4e204a1cf6f3e73c1bd832bcffc792f9f3d245cdf39
+    .codex/agents/apm-expert.toml: sha256:0b4bec64f7c6ab70df3841237928eaccfb927789d45300870ce56163230498c4
+    .cursor/agents/apm-expert.md: sha256:f6cded3e7eef97ad8fff06208bcfd5a0beafb9cfe810f78e10294c90e16fd8ae
+  content_hash: sha256:680f10a401d9479d66cc2fd6e83812a235d49f52a4a805053a148f476d773dec
+  declared_license: MIT
+deployments:
+- kind: project-relative
+  target: agent-skills
+  value: .agents/skills/ai-config
+  runtime: null
+  scope: project
+  owners:
+  - ./ai
+  active_owner: ./ai
+  content_hash: null
+- kind: project-relative
+  target: agent-skills
+  value: .agents/skills/ai-config/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - ./ai
+  active_owner: ./ai
+  content_hash: sha256:a2f73fff43d9d10fe0d102b2a78010caa0ef8819ef80fb079ebd7e0f468b4e95
+- kind: project-relative
+  target: agent-skills
+  value: .agents/skills/apm-usage
+  runtime: null
+  scope: project
+  owners:
+  - microsoft/apm/packages/apm-guide
+  active_owner: microsoft/apm/packages/apm-guide
+  content_hash: null
+- kind: project-relative
+  target: agent-skills
+  value: .agents/skills/apm-usage/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - microsoft/apm/packages/apm-guide
+  active_owner: microsoft/apm/packages/apm-guide
+  content_hash: sha256:a76e5e768e5d2257cf910d04063418424a6dc1ff7c02949c69c9824d90e05565
+- kind: project-relative
+  target: agent-skills
+  value: .agents/skills/apm-usage/authentication.md
+  runtime: null
+  scope: project
+  owners:
+  - microsoft/apm/packages/apm-guide
+  active_owner: microsoft/apm/packages/apm-guide
+  content_hash: sha256:7bc0522150f74e93f5dd11e9a892ab7df91474755f527a8074a596ccf251cd1c
+- kind: project-relative
+  target: agent-skills
+  value: .agents/skills/apm-usage/commands.md
+  runtime: null
+  scope: project
+  owners:
+  - microsoft/apm/packages/apm-guide
+  active_owner: microsoft/apm/packages/apm-guide
+  content_hash: sha256:5e40cf98efa3261449d165253ba50aa2da156133829c09477a2277c5a023af85
+- kind: project-relative
+  target: agent-skills
+  value: .agents/skills/apm-usage/dependencies.md
+  runtime: null
+  scope: project
+  owners:
+  - microsoft/apm/packages/apm-guide
+  active_owner: microsoft/apm/packages/apm-guide
+  content_hash: sha256:f0b4b61dcfb4c66c08b23366f9f64decee840363bbb1db590f770da33b366b76
+- kind: project-relative
+  target: agent-skills
+  value: .agents/skills/apm-usage/governance.md
+  runtime: null
+  scope: project
+  owners:
+  - microsoft/apm/packages/apm-guide
+  active_owner: microsoft/apm/packages/apm-guide
+  content_hash: sha256:6a75072a9350b444bfef7e985fb4c9baf760b4fe31e661da772b2fb87c67e755
+- kind: project-relative
+  target: agent-skills
+  value: .agents/skills/apm-usage/installation.md
+  runtime: null
+  scope: project
+  owners:
+  - microsoft/apm/packages/apm-guide
+  active_owner: microsoft/apm/packages/apm-guide
+  content_hash: sha256:c70544c5d1f85102c5e144ac6ae1ca68fcf8ba6a8323cb2ca6adc840d13aa960
+- kind: project-relative
+  target: agent-skills
+  value: .agents/skills/apm-usage/package-authoring.md
+  runtime: null
+  scope: project
+  owners:
+  - microsoft/apm/packages/apm-guide
+  active_owner: microsoft/apm/packages/apm-guide
+  content_hash: sha256:8b1c65ee8f99ee3ed96ceb160037919149211919a213c93c06cc8ad45ac58dad
+- kind: project-relative
+  target: agent-skills
+  value: .agents/skills/apm-usage/troubleshooting.md
+  runtime: null
+  scope: project
+  owners:
+  - microsoft/apm/packages/apm-guide
+  active_owner: microsoft/apm/packages/apm-guide
+  content_hash: sha256:43676bd88638a042188ef5763fe4a48a245862d60797141088d67f7ce8279e2e
+- kind: project-relative
+  target: agent-skills
+  value: .agents/skills/apm-usage/workflow.md
+  runtime: null
+  scope: project
+  owners:
+  - microsoft/apm/packages/apm-guide
+  active_owner: microsoft/apm/packages/apm-guide
+  content_hash: sha256:b38359a5bf58a9448be0b4e204a1cf6f3e73c1bd832bcffc792f9f3d245cdf39
+- kind: project-relative
+  target: agent-skills
+  value: .agents/skills/create-pr
+  runtime: null
+  scope: project
+  owners:
+  - ./ai
+  active_owner: ./ai
+  content_hash: null
+- kind: project-relative
+  target: agent-skills
+  value: .agents/skills/create-pr/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - ./ai
+  active_owner: ./ai
+  content_hash: sha256:509638b3d51ca90bcfd3e5cb1a3c3537bf2dad5df7101850e0d29422ab310e1d
+- kind: project-relative
+  target: agent-skills
+  value: .agents/skills/create-pr/references/pr-body.md
+  runtime: null
+  scope: project
+  owners:
+  - ./ai
+  active_owner: ./ai
+  content_hash: sha256:460628ba8dfd2a9cf12ab3d7e4acd755da4d2ba1466e2972bba6441f9bfb1aa3
+- kind: project-relative
+  target: agent-skills
+  value: .agents/skills/release
+  runtime: null
+  scope: project
+  owners:
+  - ./ai
+  active_owner: ./ai
+  content_hash: null
+- kind: project-relative
+  target: agent-skills
+  value: .agents/skills/release/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - ./ai
+  active_owner: ./ai
+  content_hash: sha256:a9cf8472a03c0b961b186486c5edd17a02142bb5304811403c8416b2bbb68777
+- kind: project-relative
+  target: agent-skills
+  value: .agents/skills/review-pr
+  runtime: null
+  scope: project
+  owners:
+  - ./ai
+  active_owner: ./ai
+  content_hash: null
+- kind: project-relative
+  target: agent-skills
+  value: .agents/skills/review-pr/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - ./ai
+  active_owner: ./ai
+  content_hash: sha256:fd6e4e518fd47d8de2b4f2777c983d5173efc8818668046c015ffcfb62df3dcb
+- kind: project-relative
+  target: claude
+  value: .claude/agents/apm-expert.md
+  runtime: null
+  scope: project
+  owners:
+  - microsoft/apm/packages/apm-guide
+  active_owner: microsoft/apm/packages/apm-guide
+  content_hash: sha256:f6cded3e7eef97ad8fff06208bcfd5a0beafb9cfe810f78e10294c90e16fd8ae
+- kind: project-relative
+  target: claude
+  value: .claude/agents/test-reviewer.md
+  runtime: null
+  scope: project
+  owners:
+  - ./ai
+  active_owner: ./ai
+  content_hash: sha256:71a08ec02f214328db062bd8636789c892b8558633383e35286a0ed7fab28149
+- kind: project-relative
+  target: claude
+  value: .claude/rules/ai-config.md
+  runtime: null
+  scope: project
+  owners:
+  - ./ai
+  active_owner: ./ai
+  content_hash: sha256:31a7ac1e581cf9c52976af6dd85b56947e545baead4becdbabc7d309e1f29629
+- kind: project-relative
+  target: claude
+  value: .claude/rules/backend-code-style.md
+  runtime: null
+  scope: project
+  owners:
+  - ./ai
+  active_owner: ./ai
+  content_hash: sha256:39005dfe8fb678df8fdb1c4140a779470ffcba932d83de82307d1d461ebb782d
+- kind: project-relative
+  target: claude
+  value: .claude/rules/git-workflow.md
+  runtime: null
+  scope: project
+  owners:
+  - ./ai
+  active_owner: ./ai
+  content_hash: sha256:b812bf1b46d78e7a1309a71fa211cd28bebc1e094e0befb1c26fcbf3603ea22b
+- kind: project-relative
+  target: claude
+  value: .claude/rules/web-testing.md
+  runtime: null
+  scope: project
+  owners:
+  - ./ai
+  active_owner: ./ai
+  content_hash: sha256:73fd687190f3003f1506951046f61b1e52dce5c1f43a5cf0145a23bcad5eddfc
+- kind: project-relative
+  target: claude
+  value: .claude/skills/ai-config
+  runtime: null
+  scope: project
+  owners:
+  - ./ai
+  active_owner: ./ai
+  content_hash: null
+- kind: project-relative
+  target: claude
+  value: .claude/skills/ai-config/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - ./ai
+  active_owner: ./ai
+  content_hash: sha256:a2f73fff43d9d10fe0d102b2a78010caa0ef8819ef80fb079ebd7e0f468b4e95
+- kind: project-relative
+  target: claude
+  value: .claude/skills/apm-usage
+  runtime: null
+  scope: project
+  owners:
+  - microsoft/apm/packages/apm-guide
+  active_owner: microsoft/apm/packages/apm-guide
+  content_hash: null
+- kind: project-relative
+  target: claude
+  value: .claude/skills/apm-usage/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - microsoft/apm/packages/apm-guide
+  active_owner: microsoft/apm/packages/apm-guide
+  content_hash: sha256:a76e5e768e5d2257cf910d04063418424a6dc1ff7c02949c69c9824d90e05565
+- kind: project-relative
+  target: claude
+  value: .claude/skills/apm-usage/authentication.md
+  runtime: null
+  scope: project
+  owners:
+  - microsoft/apm/packages/apm-guide
+  active_owner: microsoft/apm/packages/apm-guide
+  content_hash: sha256:7bc0522150f74e93f5dd11e9a892ab7df91474755f527a8074a596ccf251cd1c
+- kind: project-relative
+  target: claude
+  value: .claude/skills/apm-usage/commands.md
+  runtime: null
+  scope: project
+  owners:
+  - microsoft/apm/packages/apm-guide
+  active_owner: microsoft/apm/packages/apm-guide
+  content_hash: sha256:5e40cf98efa3261449d165253ba50aa2da156133829c09477a2277c5a023af85
+- kind: project-relative
+  target: claude
+  value: .claude/skills/apm-usage/dependencies.md
+  runtime: null
+  scope: project
+  owners:
+  - microsoft/apm/packages/apm-guide
+  active_owner: microsoft/apm/packages/apm-guide
+  content_hash: sha256:f0b4b61dcfb4c66c08b23366f9f64decee840363bbb1db590f770da33b366b76
+- kind: project-relative
+  target: claude
+  value: .claude/skills/apm-usage/governance.md
+  runtime: null
+  scope: project
+  owners:
+  - microsoft/apm/packages/apm-guide
+  active_owner: microsoft/apm/packages/apm-guide
+  content_hash: sha256:6a75072a9350b444bfef7e985fb4c9baf760b4fe31e661da772b2fb87c67e755
+- kind: project-relative
+  target: claude
+  value: .claude/skills/apm-usage/installation.md
+  runtime: null
+  scope: project
+  owners:
+  - microsoft/apm/packages/apm-guide
+  active_owner: microsoft/apm/packages/apm-guide
+  content_hash: sha256:c70544c5d1f85102c5e144ac6ae1ca68fcf8ba6a8323cb2ca6adc840d13aa960
+- kind: project-relative
+  target: claude
+  value: .claude/skills/apm-usage/package-authoring.md
+  runtime: null
+  scope: project
+  owners:
+  - microsoft/apm/packages/apm-guide
+  active_owner: microsoft/apm/packages/apm-guide
+  content_hash: sha256:8b1c65ee8f99ee3ed96ceb160037919149211919a213c93c06cc8ad45ac58dad
+- kind: project-relative
+  target: claude
+  value: .claude/skills/apm-usage/troubleshooting.md
+  runtime: null
+  scope: project
+  owners:
+  - microsoft/apm/packages/apm-guide
+  active_owner: microsoft/apm/packages/apm-guide
+  content_hash: sha256:43676bd88638a042188ef5763fe4a48a245862d60797141088d67f7ce8279e2e
+- kind: project-relative
+  target: claude
+  value: .claude/skills/apm-usage/workflow.md
+  runtime: null
+  scope: project
+  owners:
+  - microsoft/apm/packages/apm-guide
+  active_owner: microsoft/apm/packages/apm-guide
+  content_hash: sha256:b38359a5bf58a9448be0b4e204a1cf6f3e73c1bd832bcffc792f9f3d245cdf39
+- kind: project-relative
+  target: claude
+  value: .claude/skills/create-pr
+  runtime: null
+  scope: project
+  owners:
+  - ./ai
+  active_owner: ./ai
+  content_hash: null
+- kind: project-relative
+  target: claude
+  value: .claude/skills/create-pr/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - ./ai
+  active_owner: ./ai
+  content_hash: sha256:509638b3d51ca90bcfd3e5cb1a3c3537bf2dad5df7101850e0d29422ab310e1d
+- kind: project-relative
+  target: claude
+  value: .claude/skills/create-pr/references/pr-body.md
+  runtime: null
+  scope: project
+  owners:
+  - ./ai
+  active_owner: ./ai
+  content_hash: sha256:460628ba8dfd2a9cf12ab3d7e4acd755da4d2ba1466e2972bba6441f9bfb1aa3
+- kind: project-relative
+  target: claude
+  value: .claude/skills/release
+  runtime: null
+  scope: project
+  owners:
+  - ./ai
+  active_owner: ./ai
+  content_hash: null
+- kind: project-relative
+  target: claude
+  value: .claude/skills/release/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - ./ai
+  active_owner: ./ai
+  content_hash: sha256:a9cf8472a03c0b961b186486c5edd17a02142bb5304811403c8416b2bbb68777
+- kind: project-relative
+  target: claude
+  value: .claude/skills/review-pr
+  runtime: null
+  scope: project
+  owners:
+  - ./ai
+  active_owner: ./ai
+  content_hash: null
+- kind: project-relative
+  target: claude
+  value: .claude/skills/review-pr/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - ./ai
+  active_owner: ./ai
+  content_hash: sha256:fd6e4e518fd47d8de2b4f2777c983d5173efc8818668046c015ffcfb62df3dcb
+- kind: project-relative
+  target: codex
+  value: .codex/agents/apm-expert.toml
+  runtime: null
+  scope: project
+  owners:
+  - microsoft/apm/packages/apm-guide
+  active_owner: microsoft/apm/packages/apm-guide
+  content_hash: sha256:0b4bec64f7c6ab70df3841237928eaccfb927789d45300870ce56163230498c4
+- kind: project-relative
+  target: codex
+  value: .codex/agents/test-reviewer.toml
+  runtime: null
+  scope: project
+  owners:
+  - ./ai
+  active_owner: ./ai
+  content_hash: sha256:b4a73214e370bd9cad9cd99f338c84acb4714ae3cae7d0783de2cff8dd32339b
+- kind: project-relative
+  target: cursor
+  value: .cursor/agents/apm-expert.md
+  runtime: null
+  scope: project
+  owners:
+  - microsoft/apm/packages/apm-guide
+  active_owner: microsoft/apm/packages/apm-guide
+  content_hash: sha256:f6cded3e7eef97ad8fff06208bcfd5a0beafb9cfe810f78e10294c90e16fd8ae
+- kind: project-relative
+  target: cursor
+  value: .cursor/agents/test-reviewer.md
+  runtime: null
+  scope: project
+  owners:
+  - ./ai
+  active_owner: ./ai
+  content_hash: sha256:71a08ec02f214328db062bd8636789c892b8558633383e35286a0ed7fab28149
+- kind: project-relative
+  target: cursor
+  value: .cursor/rules/ai-config.mdc
+  runtime: null
+  scope: project
+  owners:
+  - ./ai
+  active_owner: ./ai
+  content_hash: sha256:ce1bd237c147e3430bb8da2452630bcef1a86bc6a2e7cb7cbb295c8f4b07d855
+- kind: project-relative
+  target: cursor
+  value: .cursor/rules/backend-code-style.mdc
+  runtime: null
+  scope: project
+  owners:
+  - ./ai
+  active_owner: ./ai
+  content_hash: sha256:eaae0c0dc4c991aad4377f4bc55c28350a458da040893b5159980e71f3646d0b
+- kind: project-relative
+  target: cursor
+  value: .cursor/rules/git-workflow.mdc
+  runtime: null
+  scope: project
+  owners:
+  - ./ai
+  active_owner: ./ai
+  content_hash: sha256:b44b370353c6b02fe456b24fd47603e4d4ba04bf85338e99faa3782fbf0f056c
+- kind: project-relative
+  target: cursor
+  value: .cursor/rules/web-testing.mdc
+  runtime: null
+  scope: project
+  owners:
+  - ./ai
+  active_owner: ./ai
+  content_hash: sha256:d0770bac20c0bf06b4969e04be522a6f68f67e91d9bf6fb7ce13e3c7521cf234

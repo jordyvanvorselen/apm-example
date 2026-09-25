@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "p=$(jq -r \".tool_input.file_path // .tool_input.path // empty\"); [ -n \"$p\" ] || exit 0; root=\"${CLAUDE_PROJECT_DIR:-$PWD}\"; case \"$p\" in /*) ;; *) p=\"$root/$p\" ;; esac; case \"$p\" in \"$root/.cursor/environment.json\"|\"$root/.claude/settings.local.json\") exit 0 ;; \"$root\"/.claude/*|\"$root\"/.cursor/*|\"$root\"/.codex/*|\"$root\"/.agents/*) echo \"BLOCKED: APM generates this file and overwrites it on the next pull. Edit the source in ai/.apm/ instead: rules in instructions/, skills in skills/, agents in agents/, hooks in hooks/.\" >&2; exit 2 ;; esac; exit 0"
+          }
+        ]
+      }
+    ]
+  }
+}

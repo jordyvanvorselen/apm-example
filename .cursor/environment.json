@@ -1,0 +1,3 @@
+{
+  "install": "bash ./ai/setup-cloud-agent.sh"
+}

@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "c=$(jq -r \".tool_input.command // empty\"); [ -n \"$c\" ] || exit 0; if printf \"%s\" \"$c\" | grep -qiE \"rm[[:space:]]+-[a-z]*(rf|fr)[a-z]*[[:space:]]+(/([[:space:]]|$)|~/?([[:space:]]|$)|\\*|\\.([[:space:]]|$))|DROP[[:space:]]+(TABLE|DATABASE|SCHEMA)|TRUNCATE[[:space:]]\"; then echo \"BLOCKED: destructive command. Ask the user to run it themselves.\" >&2; exit 2; fi; if printf \"%s\" \"$c\" | grep -qE \"git[[:space:]]+push\" && printf \"%s\" \"$c\" | grep -qE \"[[:space:]](-f|--force)([[:space:]]|$)\" && printf \"%s\" \"$c\" | grep -qE \"(^|[[:space:]:+])(main|master)([[:space:]]|$)\"; then echo \"BLOCKED: force-push to main. Never rewrite shared history.\" >&2; exit 2; fi; exit 0"
+          }
+        ]
+      }
+    ]
+  }
+}

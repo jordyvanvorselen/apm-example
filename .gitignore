@@ -1,0 +1,7 @@
+apm_modules/
+.claude/
+.codex/
+.agents/
+.cursor/*
+!.cursor/environment.json
+!.tool-versions

@@ -1,0 +1,5 @@
+#!/bin/sh
+branch_switch="$3"
+if [ "$branch_switch" = "1" ]; then
+  ai/sync.sh || true
+fi
